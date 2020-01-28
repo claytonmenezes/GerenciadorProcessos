@@ -57,12 +57,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contexto\Contexto.cs" />
+    <Compile Include="Migrations\202001282231545_iniciando o banco de dados.cs" />
+    <Compile Include="Migrations\202001282231545_iniciando o banco de dados.designer.cs">
+      <DependentUpon>202001282231545_iniciando o banco de dados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001282346111_incluindo as Classes.cs" />
+    <Compile Include="Migrations\202001282346111_incluindo as Classes.designer.cs">
+      <DependentUpon>202001282346111_incluindo as Classes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\Geral\RepositorioPadrao.cs" />
+    <Compile Include="Repositorios\RepositorioProcesso.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GerenciadorProcessos.Domain\GerenciadorProcessos.Domain.csproj">
+      <Project>{E7D69885-0683-492E-8133-904ABE606BE1}</Project>
+      <Name>GerenciadorProcessos.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202001282231545_iniciando o banco de dados.resx">
+      <DependentUpon>202001282231545_iniciando o banco de dados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001282346111_incluindo as Classes.resx">
+      <DependentUpon>202001282346111_incluindo as Classes.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

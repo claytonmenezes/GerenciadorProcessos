@@ -130,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Geral\BaseController.cs" />
+    <Compile Include="Controllers\Geral\DefaultApiController.cs" />
+    <Compile Include="Controllers\ProcessoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -150,11 +153,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GerenciadorProcessos.Domain\GerenciadorProcessos.Domain.csproj">
+      <Project>{E7D69885-0683-492E-8133-904ABE606BE1}</Project>
+      <Name>GerenciadorProcessos.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GerenciadorProcessos.Infra\GerenciadorProcessos.Infra.csproj">
+      <Project>{D50CFABF-E150-464F-9982-3451D399FE8C}</Project>
+      <Name>GerenciadorProcessos.Infra</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

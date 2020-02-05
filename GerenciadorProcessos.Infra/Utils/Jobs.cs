@@ -9,11 +9,12 @@ namespace GerenciadorProcessos.Infra.Utils
         {
             return Task.Run(() => {
                 var tratamentoArquivo = new TratamentoArquivoBrasil();
-                //tratamentoArquivo.CriaAmbiente();
-                var stream = tratamentoArquivo.Download();
-                //var streamArquivo = tratamentoArquivo.ExtrairZip(streamRar);
-                var dataTable = tratamentoArquivo.StreamToTable(stream);
-                //tratamentoArquivo.inserirBanco(dataTable);
+                tratamentoArquivo.PadronizaAmbiente();
+                tratamentoArquivo.CriaAmbiente();
+                tratamentoArquivo.Download();
+                tratamentoArquivo.ExtrairZip();
+                var dataTable = tratamentoArquivo.DbfToTable();
+                tratamentoArquivo.inserirBanco(dataTable);
                 tratamentoArquivo.PadronizaAmbiente();
             });
         }

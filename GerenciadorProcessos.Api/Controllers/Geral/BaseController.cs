@@ -13,7 +13,7 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
         // GET: api/Chamado/Listar
         //[Authorize()]
         [HttpGet]
-        public async Task<IEnumerable<T>> Listar()
+        public IEnumerable<T> Listar()
         {
             R repo = new R();
             //repo.usuarioId = await PegaUsuario();
@@ -22,7 +22,7 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
         //GET: api/Chamado/Buscar/5
         //[Authorize()]
         [HttpGet]
-        public async Task<IHttpActionResult> Buscar(int id)
+        public IHttpActionResult Buscar(int id)
         {
             if (id == -1)
             {
@@ -46,7 +46,7 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
         // PUT: api/Chamado/Alterar/5
         //[Authorize()]
         [HttpPut]
-        public async Task<IHttpActionResult> Alterar(T obj)
+        public IHttpActionResult Alterar(T obj)
         {
             PreAlterar(obj);
 
@@ -65,7 +65,7 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!await Exists(obj.Id))
+                if (!Exists(obj.Id))
                 {
                     return NotFound();
                 }
@@ -80,7 +80,7 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
         // POST: api/Chamado/Incluir
         //[Authorize()]
         [HttpPost]
-        public async Task<IHttpActionResult> Incluir()
+        public IHttpActionResult Incluir()
         {
             string json = Request.Content.ReadAsStringAsync().Result;
             T obj = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
@@ -101,7 +101,7 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
         // DELETE: api/Chamado/Excluir/5
         //[Authorize()]
         [HttpDelete]
-        public async Task<IHttpActionResult> Excluir(int id)
+        public IHttpActionResult Excluir(int id)
         {
             R repo = new R();
             //repo.usuarioId = await PegaUsuario();
@@ -117,7 +117,7 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
 
             return Ok(obj);
         }
-        private async Task<bool> Exists(int id)
+        private bool Exists(int id)
         {
             R repo = new R();
             //repo.usuarioId = await PegaUsuario();

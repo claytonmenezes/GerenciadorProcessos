@@ -1,4 +1,5 @@
 ﻿using Ionic.Zip;
+using System;
 using System.Data;
 using System.Data.Odbc;
 using System.Data.SqlClient;
@@ -11,37 +12,34 @@ namespace GerenciadorProcessos.Infra.Utils
     {
         public SqlConnection conexao = new SqlConnection();
 
-        public MemoryStream ExtrairZip(MemoryStream streamRar)
+        public void ExtrairZip()
         {
-            using (ZipFile zip = ZipFile.Read(streamRar))
+            using (ZipFile zip = new ZipFile(@"C:\Extração\Brasil.zip"))
             {
-                zip["Brasil.dbf"].Extract(streamRar);
+                try
+                {
+                    zip.ExtractAll(@"C:\Extração");
+                }
+                catch
+                {
+                    throw;
+                }
             }
-            streamRar.Seek(0, SeekOrigin.Begin);
-            return streamRar;
         }
-        public Stream Download()
+        public void Download()
         {
             WebClient wc = new WebClient();
-            using (MemoryStream stream = new MemoryStream(wc.DownloadData("http://sigmine.dnpm.gov.br/sirgas2000/Brasil.zip")))
-            {
-                Stream retorno = Stream.Null;
-                using (ZipFile zip = ZipFile.Read(stream))
-                {
-                    zip["BRASIL.dbf"].Extract(retorno);
-                }
-                retorno.Seek(0, SeekOrigin.Begin);
-                return retorno;
-            }
+            var address = new Uri("http://sigmine.dnpm.gov.br/sirgas2000/Brasil.zip");
+            wc.DownloadFile(address, @"C:\Extração\Brasil.zip");
         }
-        public DataTable StreamToTable(Stream stream)
+        public DataTable DbfToTable()
         {
             DataTable table = new DataTable();
             OdbcConnection conexao = new OdbcConnection();
-            conexao.ConnectionString = @"Driver={Microsoft dBase Driver (*.dbf)};SourceType=DBF;SourceDB=" + stream + ";Exclusive=No; Collate=Machine;NULL=NO;DELETED=NO;BACKGROUNDFETCH=NO;";
+            conexao.ConnectionString = @"Driver={Microsoft dBase Driver (*.dbf)};SourceType=DBF;SourceDB=C:\Extração\BRASIL.dbf;Exclusive=No; Collate=Machine;NULL=NO;DELETED=NO;BACKGROUNDFETCH=NO;";
             conexao.Open();
             OdbcCommand comando = conexao.CreateCommand();
-            comando.CommandText = @"SELECT * FROM " + stream;
+            comando.CommandText = @"SELECT * FROM C:\Extração\BRASIL.dbf";
             table.Load(comando.ExecuteReader());
             conexao.Close();
 
@@ -49,12 +47,14 @@ namespace GerenciadorProcessos.Infra.Utils
         }
         public void CriaAmbiente()
         {
-            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\Extração");
+            Directory.CreateDirectory(@"C:\Extração");
         }
         public void PadronizaAmbiente()
         {
-            Directory.Delete(Directory.GetCurrentDirectory() + @"\Extração", true);
-            File.Delete(Directory.GetCurrentDirectory() + @"\Brasil.zip");
+            if (Directory.Exists(@"C:\Extração"))
+            {
+                Directory.Delete(@"C:\Extração", true);
+            }
         }
         public void inserirBanco(DataTable dataTable)
         {
@@ -71,6 +71,13 @@ namespace GerenciadorProcessos.Infra.Utils
             {
                 Desconectar();
             }
+        }
+        public void ExecutarComando (string stringComando)
+        {
+            var comando = new SqlCommand();
+            comando.Connection = conexao;
+            comando.CommandText = stringComando;
+            comando.ExecuteNonQuery();
         }
         private void Conectar()
         {

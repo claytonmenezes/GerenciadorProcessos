@@ -1,6 +1,4 @@
 ﻿using Quartz;
-using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace GerenciadorProcessos.Infra.Utils

@@ -20,22 +20,21 @@ namespace GerenciadorProcessos.Infra.Utils
             streamRar.Seek(0, SeekOrigin.Begin);
             return streamRar;
         }
-        public MemoryStream Download()
+        public Stream Download()
         {
             WebClient wc = new WebClient();
             using (MemoryStream stream = new MemoryStream(wc.DownloadData("http://sigmine.dnpm.gov.br/sirgas2000/Brasil.zip")))
             {
-                //byte[] bytes = new byte[stream.Length];
-                //stream.Read(bytes, 0, (int)stream.Length);
+                Stream retorno = Stream.Null;
                 using (ZipFile zip = ZipFile.Read(stream))
                 {
-                    zip["BRASIL.dbf"].Extract(stream);
+                    zip["BRASIL.dbf"].Extract(retorno);
                 }
-                stream.Seek(0, SeekOrigin.Begin);
-                return stream;
+                retorno.Seek(0, SeekOrigin.Begin);
+                return retorno;
             }
         }
-        public DataTable StreamToTable(MemoryStream stream)
+        public DataTable StreamToTable(Stream stream)
         {
             DataTable table = new DataTable();
             OdbcConnection conexao = new OdbcConnection();

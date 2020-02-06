@@ -85,6 +85,7 @@
     <Compile Include="Repositorios\Geral\RepositorioPadrao.cs" />
     <Compile Include="Repositorios\RepositorioProcesso.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utils\BancoDados.cs" />
     <Compile Include="Utils\Jobs.cs" />
     <Compile Include="Utils\TratamentoArquivoBrasil.cs" />
   </ItemGroup>

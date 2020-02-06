@@ -1,4 +1,5 @@
 ﻿using Quartz;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace GerenciadorProcessos.Infra.Utils
@@ -7,15 +8,19 @@ namespace GerenciadorProcessos.Infra.Utils
     {
         public Task Execute(IJobExecutionContext context)
         {
+            var tratamentoArquivo = new TratamentoArquivoBrasil();
+            var bancoDados = new BancoDados();
+
             return Task.Run(() => {
-                var tratamentoArquivo = new TratamentoArquivoBrasil();
-                tratamentoArquivo.PadronizaAmbiente();
-                tratamentoArquivo.CriaAmbiente();
+                if (Directory.Exists(@"C:\Extração")) Directory.Delete(@"C:\Extração", true);
+                Directory.CreateDirectory(@"C:\Extração");
+
                 tratamentoArquivo.Download();
                 tratamentoArquivo.ExtrairZip();
                 var dataTable = tratamentoArquivo.DbfToTable();
-                tratamentoArquivo.inserirBanco(dataTable);
-                tratamentoArquivo.PadronizaAmbiente();
+                bancoDados.inserirBanco(dataTable);
+
+                Directory.Delete(@"C:\Extração", true);
             });
         }
     }

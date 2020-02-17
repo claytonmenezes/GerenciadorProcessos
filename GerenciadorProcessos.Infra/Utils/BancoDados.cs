@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -6,7 +7,7 @@ namespace GerenciadorProcessos.Infra.Utils
 {
     public class BancoDados
     {
-        private SqlConnection conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["dbGerenciadorProcessos"].ConnectionString);
+        private SqlConnection conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["GerenciadorProcessos"].ConnectionString);
 
         public void inserirBanco(DataTable dataTable)
         {
@@ -15,25 +16,20 @@ namespace GerenciadorProcessos.Infra.Utils
             {
                 using (SqlBulkCopy bulk = new SqlBulkCopy(conexao))
                 {
-                    ExecutarComando(@"
-                        CREATE TABLE #temp(
-	                        PROCESSO varchar(max),
-	                        ID varchar(max),
-	                        NUMERO varchar(max),
-	                        ANO varchar(max),
-	                        AREA_HA varchar(max),
-	                        FASE varchar(max),
-	                        ULT_EVENTO varchar(max),
-	                        NOME varchar(max),
-	                        SUBS varchar(max),
-	                        USO varchar(max),
-	                        UF varchar(max)
-                        )
-                    ");
-                    bulk.DestinationTableName = "#temp";
+                    foreach (DataColumn column in dataTable.Columns)
+                    {
+                        if (column.ColumnName.Equals("Expr1000"))
+                        {
+                            bulk.ColumnMappings.Add(new SqlBulkCopyColumnMapping() { SourceColumn = column.ColumnName, DestinationColumn = "ImportacaoId" });
+                        }
+                        else
+                        {
+                            bulk.ColumnMappings.Add(new SqlBulkCopyColumnMapping() { SourceColumn = column.ColumnName, DestinationColumn = column.ColumnName });
+                        }
+                    }
+                    bulk.DestinationTableName = "ImpBrasil";
                     bulk.WriteToServer(dataTable);
-                    ExecutarComando("");
-                    ExecutarComando("drop table #temp");
+                    ExecutarComando("exec prInsereProcessosNovos");
                 }
             }
             finally
@@ -41,12 +37,20 @@ namespace GerenciadorProcessos.Infra.Utils
                 Desconectar();
             }
         }
-        public void ExecutarComando(string stringComando)
+        public object ExecutarComando(string stringComando)
         {
-            var comando = new SqlCommand();
-            comando.Connection = conexao;
-            comando.CommandText = stringComando;
-            comando.ExecuteNonQuery();
+            Conectar();
+            try
+            {
+                var comando = new SqlCommand();
+                comando.Connection = conexao;
+                comando.CommandText = stringComando;
+                return comando.ExecuteScalar();
+            }
+            finally
+            {
+                Desconectar();
+            }
         }
         private void Conectar()
         {

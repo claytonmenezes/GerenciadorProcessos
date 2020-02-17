@@ -27,17 +27,20 @@ namespace GerenciadorProcessos.Infra.Utils
                 }
             }
         }
-        public DataTable DbfToTable()
+        public DataTable DbfToTable(int importacaoId)
         {
             DataTable table = new DataTable();
-            OdbcConnection conexao = new OdbcConnection();
-            conexao.ConnectionString = @"Driver={Microsoft dBase Driver (*.dbf)};SourceType=DBF;SourceDB=C:\Extração\BRASIL.dbf;Exclusive=No; Collate=Machine;NULL=NO;DELETED=NO;BACKGROUNDFETCH=NO;";
+            var conexao = new OdbcConnection(@"Driver={Microsoft dBase Driver (*.dbf)};SourceType=DBF;SourceDB=C:\Extração\BRASIL.dbf;Exclusive=No; Collate=Machine;NULL=NO;DELETED=NO;BACKGROUNDFETCH=NO;");
             conexao.Open();
-            OdbcCommand comando = conexao.CreateCommand();
-            comando.CommandText = @"SELECT * FROM C:\Extração\BRASIL.dbf";
-            table.Load(comando.ExecuteReader());
-            conexao.Close();
-
+            try
+            {
+                var comando = new OdbcCommand(@"SELECT " + (importacaoId + 1) + @", * FROM C:\Extração\BRASIL.dbf", conexao);
+                table.Load(comando.ExecuteReader());
+            }
+            finally
+            {
+                conexao.Close();
+            }
             return table;
         }
     }

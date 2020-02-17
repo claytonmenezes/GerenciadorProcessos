@@ -1,4 +1,5 @@
 ﻿using Quartz;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -17,7 +18,9 @@ namespace GerenciadorProcessos.Infra.Utils
 
                 tratamentoArquivo.Download();
                 tratamentoArquivo.ExtrairZip();
-                var dataTable = tratamentoArquivo.DbfToTable();
+                var importacaoId = bancoDados.ExecutarComando("select max(ImportacaoId) from ImpBrasil");
+                importacaoId = importacaoId != DBNull.Value ? importacaoId : 0;
+                var dataTable = tratamentoArquivo.DbfToTable((int)importacaoId);
                 bancoDados.inserirBanco(dataTable);
 
                 Directory.Delete(@"C:\Extração", true);

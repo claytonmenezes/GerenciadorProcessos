@@ -18,7 +18,7 @@ namespace GerenciadorProcessos.Infra
             IJobDetail job = JobBuilder.Create<Jobs>().Build();
 
             ITrigger trigger = TriggerBuilder.Create().WithCalendarIntervalSchedule()
-                .WithSchedule(CronScheduleBuilder.CronSchedule("0 13 14 ? * * *"))
+                //.WithSchedule(CronScheduleBuilder.CronSchedule("0 50 23 ? * * *"))
                 .Build();
             scheduler.ScheduleJob(job, trigger).Wait();
         }

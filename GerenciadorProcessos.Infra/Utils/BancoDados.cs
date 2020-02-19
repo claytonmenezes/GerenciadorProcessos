@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -29,7 +28,7 @@ namespace GerenciadorProcessos.Infra.Utils
                     }
                     bulk.DestinationTableName = "ImpBrasil";
                     bulk.WriteToServer(dataTable);
-                    ExecutarComando("exec prInsereProcessosNovos");
+                    //ExecutarComando("exec prInsereProcessosNovos");
                 }
             }
             finally

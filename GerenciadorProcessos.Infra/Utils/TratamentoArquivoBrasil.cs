@@ -1,7 +1,6 @@
 ﻿using Ionic.Zip;
 using System;
 using System.Data;
-using System.Data.Odbc;
 using System.Net;
 
 namespace GerenciadorProcessos.Infra.Utils
@@ -30,18 +29,33 @@ namespace GerenciadorProcessos.Infra.Utils
         public DataTable DbfToTable(int importacaoId)
         {
             DataTable table = new DataTable();
-            var conexao = new OdbcConnection(@"Driver={Microsoft dBase Driver (*.dbf)};SourceType=DBF;SourceDB=C:\Extração\BRASIL.dbf;Exclusive=No; Collate=Machine;NULL=NO;DELETED=NO;BACKGROUNDFETCH=NO;");
-            conexao.Open();
-            try
+            table.Columns.Add("ImportacaoId");
+            using (var dbfReader = new DbfDataReader.DbfDataReader(@"C:\Extração\BRASIL.dbf"))
             {
-                var comando = new OdbcCommand(@"SELECT " + (importacaoId + 1) + @", * FROM C:\Extração\BRASIL.dbf", conexao);
-                table.Load(comando.ExecuteReader());
-            }
-            finally
-            {
-                conexao.Close();
+                foreach (var column in dbfReader.DbfTable.Columns)
+                {
+                    table.Columns.Add(column.Name);
+                }
+                dbfReader.DbfTable.SkipToFirstRecord(dbfReader.DbfTable.BinaryReader);
+                while (dbfReader.DbfRecord.Read(dbfReader.DbfTable.BinaryReader))
+                {
+                    object[] dataRow = new object[table.Columns.Count];
+                    dataRow.SetValue(importacaoId, 0);
+                    int count = 1;
+                    foreach (var itemRow in dbfReader.DbfRecord.Values)
+                    {
+                        dataRow.SetValue(itemRow.ToString(), count);
+                        count++;
+                    }
+                    table.Rows.Add(dataRow);
+                }
             }
             return table;
+        }
+        private string MetoodoConversao (string textoErrado)
+        {
+            string textoCerto = "";
+            return textoCerto;
         }
     }
 }

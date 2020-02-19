@@ -18,7 +18,7 @@ namespace GerenciadorProcessos.Infra.Utils
 
                 tratamentoArquivo.Download();
                 tratamentoArquivo.ExtrairZip();
-                var importacaoId = bancoDados.ExecutarComando("select max(ImportacaoId) from ImpBrasil");
+                var importacaoId = bancoDados.ExecutarComando("select isnull(max(ImportacaoId), 0) + 1 from ImpBrasil");
                 importacaoId = importacaoId != DBNull.Value ? importacaoId : 0;
                 var dataTable = tratamentoArquivo.DbfToTable((int)importacaoId);
                 bancoDados.inserirBanco(dataTable);

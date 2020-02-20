@@ -16,6 +16,7 @@ namespace GerenciadorProcessos.Infra.Contexto
         public virtual DbSet<CondicaoPropriedadeSolo> CondicoesPropriedadeSolo { get; set; }
         public virtual DbSet<ProcessoAssociado> ProcessosAssociado { get; set; }
         public virtual DbSet<DocumentoProcesso> DocumentosProcesso { get; set; }
+        public virtual DbSet<Evento> Eventos { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -6,6 +6,7 @@ namespace GerenciadorProcessos.Domain.Entidades
 {
     public class Processo : EntidadeBase
     {
+        public string NumeroProcesso { get; set; }
         public string NumeroCadastroEmpresa { get; set; }
         public string NUP { get; set; }
         public float? Area { get; set; }
@@ -18,6 +19,7 @@ namespace GerenciadorProcessos.Domain.Entidades
         public DateTime? DataPrioridade { get; set; }
         public Fase Fase { get; set; }
         public int FaseId { get; set; }
+        public List<Evento> Eventos { get; set; }
         public List<PessoaRelacionada> PessoasRelacionadas { get; set; }
         public List<Titulo> Titulos { get; set; }
         public List<Substancia> Substancias { get; set; }

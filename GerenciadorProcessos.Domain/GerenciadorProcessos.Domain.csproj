@@ -52,6 +52,7 @@
     <Compile Include="Entidades\Processo.cs" />
     <Compile Include="Entidades\ProcessoAssociado.cs" />
     <Compile Include="Entidades\Substancia.cs" />
+    <Compile Include="Entidades\TipoEvento.cs" />
     <Compile Include="Entidades\Titulo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

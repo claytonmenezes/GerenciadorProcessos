@@ -97,6 +97,34 @@
     <Compile Include="Migrations\202002161242510_criando tabela importação.designer.cs">
       <DependentUpon>202002161242510_criando tabela importação.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002192050144_Criando a classe Evento.cs" />
+    <Compile Include="Migrations\202002192050144_Criando a classe Evento.designer.cs">
+      <DependentUpon>202002192050144_Criando a classe Evento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002192056573_arualizando o evento com os dados de pontuação.cs" />
+    <Compile Include="Migrations\202002192056573_arualizando o evento com os dados de pontuação.designer.cs">
+      <DependentUpon>202002192056573_arualizando o evento com os dados de pontuação.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002192231221_coluna CodEvento aceitando null.cs" />
+    <Compile Include="Migrations\202002192231221_coluna CodEvento aceitando null.designer.cs">
+      <DependentUpon>202002192231221_coluna CodEvento aceitando null.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002192320228_fazendo ligação entre evento e processo.cs" />
+    <Compile Include="Migrations\202002192320228_fazendo ligação entre evento e processo.designer.cs">
+      <DependentUpon>202002192320228_fazendo ligação entre evento e processo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002192334540_criando a TipoEvento.cs" />
+    <Compile Include="Migrations\202002192334540_criando a TipoEvento.designer.cs">
+      <DependentUpon>202002192334540_criando a TipoEvento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002192356449_inserindo data no evento.cs" />
+    <Compile Include="Migrations\202002192356449_inserindo data no evento.designer.cs">
+      <DependentUpon>202002192356449_inserindo data no evento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002200013093_incluindo o numero de processo no processo.cs" />
+    <Compile Include="Migrations\202002200013093_incluindo o numero de processo no processo.designer.cs">
+      <DependentUpon>202002200013093_incluindo o numero de processo no processo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\Geral\RepositorioPadrao.cs" />
@@ -126,6 +154,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002161242510_criando tabela importação.resx">
       <DependentUpon>202002161242510_criando tabela importação.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002192050144_Criando a classe Evento.resx">
+      <DependentUpon>202002192050144_Criando a classe Evento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002192056573_arualizando o evento com os dados de pontuação.resx">
+      <DependentUpon>202002192056573_arualizando o evento com os dados de pontuação.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002192231221_coluna CodEvento aceitando null.resx">
+      <DependentUpon>202002192231221_coluna CodEvento aceitando null.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002192320228_fazendo ligação entre evento e processo.resx">
+      <DependentUpon>202002192320228_fazendo ligação entre evento e processo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002192334540_criando a TipoEvento.resx">
+      <DependentUpon>202002192334540_criando a TipoEvento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002192356449_inserindo data no evento.resx">
+      <DependentUpon>202002192356449_inserindo data no evento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002200013093_incluindo o numero de processo no processo.resx">
+      <DependentUpon>202002200013093_incluindo o numero de processo no processo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -5,53 +5,58 @@ begin
 end
 GO
 create procedure prInsereProcessosNovos
-/*----------------------------------------------------------------------------------------------------------------------  
-NOME: prInsereProcessosNovos  
-OBJETIVO: Atualiza o banco de dados com os novos processos  
+/*----------------------------------------------------------------------------------------------------------------------
+NOME: prInsereProcessosNovos
+OBJETIVO: Atualiza o banco de dados com os novos processos
 DATA: 16/02/2020
-----------------------------------------------------------------------------------------------------------------------*/  
-as
+----------------------------------------------------------------------------------------------------------------------*/
+(@importacaoId int)as
 begin
-	select distinct case when FASE <> '' then FASE else 'DADO NÃO CADASTRADO' end Fase
-	into #fases
+	select ImportacaoId, dbo.fnStrZero(dbo.fnSoNumeros(PROCESSO), 10) PROCESSO, ID, NUMERO, ANO, dbo.fnConverteMoeda(AREA_HA) AREA_HA,
+		   case when FASE <> '' then FASE else 'DADO NÃO CADASTRADO' end FASE,
+		   case when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then substring(ULT_EVENTO, 0, charindex(' - ', ULT_EVENTO)) else null end COD_EVENTO,
+		   case when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then ltrim(rtrim(replace(replace(replace(substring(ULT_EVENTO, 2 + charindex('- ', ULT_EVENTO, 2), LEN(substring(ULT_EVENTO, 2 + charindex('- ', ULT_EVENTO, 2), 10000)) - 14), ' ', '<>'),'><', ''),'<>', ' '))) else 'DADO NÃO CADASTRADO' end EVENTO,
+		   case when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then substring(ULT_EVENTO, len(ULT_EVENTO) - 9, 10000) else null end DATA_EVENTO,
+		   NOME, SUBS, USO, UF
+	into #temp
+	from ImpBrasil
+	where ImportacaoId = @importacaoId
+
+	with cte as (
+		select *, row_number() over(partition by PROCESSO order by DATA_EVENTO desc) linhas
+		from #temp
+	)
+	select *
+	into #tempProcessos
+	from cte
+	where linhas = 1
+
+	select *--dbo.fnStrZero(dbo.fnSoNumeros(PROCESSO), 10) processo, dbo.fnConverteMoeda(AREA_HA) area, UF, case when FASE <> '' then FASE else 'DADO NÃO CADASTRADO' end Fase
+	--into #tempProcessos
+	from #tempProcessos
+
+	select Processo, case when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then substring(ULT_EVENTO, 0, charindex(' - ', ULT_EVENTO)) else null end codEvento,
+			case when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then substring(ULT_EVENTO, len(ULT_EVENTO) - 9, 10000) else null end Data
+	into #tempEventos
 	from ImpBrasil
 
-	select distinct case when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then substring(ULT_EVENTO, 0, charindex(' - ', ULT_EVENTO)) else null end codEvento,
-		   case when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then ltrim(rtrim(replace(replace(replace(substring(ULT_EVENTO, 2 + charindex('- ', ULT_EVENTO, 2), LEN(substring(ULT_EVENTO, 2 + charindex('- ', ULT_EVENTO, 2), 10000)) - 14), ' ', '<>'),'><', ''),'<>', ' ')))
-				else 'DADO NÃO CADASTRADO' end evento
-				--, case when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then substring(ULT_EVENTO, len(ULT_EVENTO) - 9, 10000) else null end Data
-	into #eventos
-	from ImpBrasil
-	order by 1
-
-	select PROCESSO, AREA_HA, UF, case when FASE <> '' then FASE else 'DADO NÃO CADASTRADO' end Fase
-	into #processos
-	from ImpBrasil
-
-	insert into Fase
-	select Fase
-	from #fases a
+	insert into Processo(NumeroCadastroEmpresa, NUP, Area, TipoRequerimento, Ativo, Superintendencia, UF, UnidadeProtocolizadora, DataProtocolo, DataPrioridade, FaseId, NumeroProcesso)
+	select null, null, area, null, 0, null, UF, null, null, null, f.Id, processo
+	from #tempProcessos tp
+	join Fase f on tp.FASE = f.Nome
 	where not exists(
-		select 2
-		from Fase b
-		where a.Fase = b.Nome
+		select 4
+		from Processo p
+		where tp.processo = p.NumeroProcesso
 	)
 
-	insert into TipoEvento(CodEvento, Nome)
-	select codEvento, evento
-	from #eventos a
-	where not exists(
-		select 3
-		from TipoEvento b
-		where a.evento = b.Nome
-	)
+	insert into Evento
+	select 
+	from #tempEventos tevt
+	join TipoEvento te on tevt.codEvento = te.CodEvento
+	join proc
 
-	--insert into Processo(NumeroCadastroEmpresa, NUP, Area, TipoRequerimento, Ativo, Superintendencia, UF, UnidadeProtocolizadora, DataProtocolo, DataPrioridade, FaseId, NumeroProcesso)
-	select null, null, AREA_HA, null, 0, null, UF, null, null, null, f.Id, REPLICATE('0', 11 - LEN(PROCESSO)) + RTrim(PROCESSO)
-	from #processos ib
-	join Fase f on ib.FASE = f.Nome
-
-	drop table #fases, #eventos, #processos
+	drop table #tempProcessos, #tempEventos
 end
 
 GO

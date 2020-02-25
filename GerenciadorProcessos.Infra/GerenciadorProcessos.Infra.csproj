@@ -125,11 +125,32 @@
     <Compile Include="Migrations\202002200013093_incluindo o numero de processo no processo.designer.cs">
       <DependentUpon>202002200013093_incluindo o numero de processo no processo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002241636135_incluindo funções só numeros e converte moedas.cs" />
+    <Compile Include="Migrations\202002241636135_incluindo funções só numeros e converte moedas.designer.cs">
+      <DependentUpon>202002241636135_incluindo funções só numeros e converte moedas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002241644139_incluindo a função StrZero.cs" />
+    <Compile Include="Migrations\202002241644139_incluindo a função StrZero.designer.cs">
+      <DependentUpon>202002241644139_incluindo a função StrZero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002241751162_inserindo as procs para inserção dos processos.cs" />
+    <Compile Include="Migrations\202002241751162_inserindo as procs para inserção dos processos.designer.cs">
+      <DependentUpon>202002241751162_inserindo as procs para inserção dos processos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002241953104_atualizando as procs de inserção de fases e tipos eventos.cs" />
+    <Compile Include="Migrations\202002241953104_atualizando as procs de inserção de fases e tipos eventos.designer.cs">
+      <DependentUpon>202002241953104_atualizando as procs de inserção de fases e tipos eventos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\Geral\RepositorioPadrao.cs" />
     <Compile Include="Repositorios\RepositorioProcesso.cs" />
+    <Content Include="ScriptsSql\fnStrZero.sql" />
+    <Content Include="ScriptsSql\fnSoNumeros.sql" />
+    <Content Include="ScriptsSql\fnConverteMoeda.sql" />
+    <Content Include="ScriptsSql\prInsereTiposEventosNovos.sql" />
     <Content Include="ScriptsSql\prInsereProcessosNovos.sql" />
+    <Content Include="ScriptsSql\prInsereFasesNovas.sql" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\BancoDados.cs" />
     <Compile Include="Utils\Jobs.cs" />
@@ -175,6 +196,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002200013093_incluindo o numero de processo no processo.resx">
       <DependentUpon>202002200013093_incluindo o numero de processo no processo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241636135_incluindo funções só numeros e converte moedas.resx">
+      <DependentUpon>202002241636135_incluindo funções só numeros e converte moedas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241644139_incluindo a função StrZero.resx">
+      <DependentUpon>202002241644139_incluindo a função StrZero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241751162_inserindo as procs para inserção dos processos.resx">
+      <DependentUpon>202002241751162_inserindo as procs para inserção dos processos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241953104_atualizando as procs de inserção de fases e tipos eventos.resx">
+      <DependentUpon>202002241953104_atualizando as procs de inserção de fases e tipos eventos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -16,9 +16,14 @@ begin
 	into #fases
 	from ImpBrasil
 
-	select distinct case when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then substring(ULT_EVENTO, 0, charindex(' - ', ULT_EVENTO)) else null end codEvento,
-		   case when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then ltrim(rtrim(replace(replace(replace(substring(ULT_EVENTO, 2 + charindex('- ', ULT_EVENTO, 2), LEN(substring(ULT_EVENTO, 2 + charindex('- ', ULT_EVENTO, 2), 10000)) - 14), ' ', '<>'),'><', ''),'<>', ' ')))
-				else 'DADO NÃO CADASTRADO' end evento
+	select distinct case
+						when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then substring(ULT_EVENTO, 0, charindex(' - ', ULT_EVENTO))
+						else null
+					end codEvento,
+					case
+						when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then ltrim(rtrim(replace(replace(replace(substring(ULT_EVENTO, 2 + charindex('- ', ULT_EVENTO, 2), LEN(substring(ULT_EVENTO, 2 + charindex('- ', ULT_EVENTO, 2), 10000)) - 14), ' ', '<>'),'><', ''),'<>', ' ')))
+						else 'DADO NÃO CADASTRADO'
+					end evento
 				--, case when ULT_EVENTO <> 'DADO NÃO CADASTRADO' then substring(ULT_EVENTO, len(ULT_EVENTO) - 9, 10000) else null end Data
 	into #eventos
 	from ImpBrasil
@@ -46,10 +51,15 @@ begin
 		where a.evento = b.Nome
 	)
 
-	--insert into Processo(NumeroCadastroEmpresa, NUP, Area, TipoRequerimento, Ativo, Superintendencia, UF, UnidadeProtocolizadora, DataProtocolo, DataPrioridade, FaseId, NumeroProcesso)
-	select null, null, AREA_HA, null, 0, null, UF, null, null, null, f.Id, REPLICATE('0', 11 - LEN(PROCESSO)) + RTrim(PROCESSO)
-	from #processos ib
-	join Fase f on ib.FASE = f.Nome
+	insert into Processo(NumeroCadastroEmpresa, NUP, Area, TipoRequerimento, Ativo, Superintendencia, UF, UnidadeProtocolizadora, DataProtocolo, DataPrioridade, FaseId, NumeroProcesso)
+	select null, null, dbo.fnConverteMoeda(AREA_HA), null, 0, null, UF, null, null, null, f.Id, REPLICATE('0', 11 - LEN(PROCESSO)) + RTrim(PROCESSO)
+	from #processos tp
+	join Fase f on tp.FASE = f.Nome
+	where not exists(
+		select 8
+		from Processo p
+		where p.NumeroProcesso = REPLICATE('0', 11 - LEN(tp.PROCESSO)) + RTrim(tp.PROCESSO)
+	)
 
 	drop table #fases, #eventos, #processos
 end

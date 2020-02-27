@@ -125,14 +125,20 @@
     <Compile Include="Migrations\202002200013093_incluindo o numero de processo no processo.designer.cs">
       <DependentUpon>202002200013093_incluindo o numero de processo no processo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002212145098_incluindo a funcção ConverteMoeda.cs" />
+    <Compile Include="Migrations\202002212145098_incluindo a funcção ConverteMoeda.designer.cs">
+      <DependentUpon>202002212145098_incluindo a funcção ConverteMoeda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\Geral\RepositorioPadrao.cs" />
     <Compile Include="Repositorios\RepositorioProcesso.cs" />
+    <Content Include="ScriptsSql\fnConverteMoeda.sql" />
     <Content Include="ScriptsSql\prInsereProcessosNovos.sql" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\BancoDados.cs" />
-    <Compile Include="Utils\Jobs.cs" />
+    <Compile Include="Utils\JobServerOnline.cs" />
+    <Compile Include="Utils\JobCargaBrasil.cs" />
     <Compile Include="Utils\TratamentoArquivoBrasil.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002200013093_incluindo o numero de processo no processo.resx">
       <DependentUpon>202002200013093_incluindo o numero de processo no processo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002212145098_incluindo a funcção ConverteMoeda.resx">
+      <DependentUpon>202002212145098_incluindo a funcção ConverteMoeda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

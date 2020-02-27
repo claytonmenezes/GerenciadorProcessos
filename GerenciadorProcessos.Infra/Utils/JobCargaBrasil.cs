@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GerenciadorProcessos.Infra.Utils
 {
-    public class Jobs : IJob
+    public class JobCargaBrasil : IJob
     {
         public Task Execute(IJobExecutionContext context)
         {

@@ -21,7 +21,7 @@ namespace GerenciadorProcessos.Infra.Utils
                 var importacaoId = bancoDados.ExecutarComando("select isnull(max(ImportacaoId), 0) + 1 from ImpBrasil");
                 importacaoId = importacaoId != DBNull.Value ? importacaoId : 0;
                 var dataTable = tratamentoArquivo.DbfToTable((int)importacaoId);
-                bancoDados.inserirBanco(dataTable);
+                bancoDados.inserirBanco(dataTable, (int)importacaoId);
 
                 Directory.Delete(@"C:\Extração", true);
             });

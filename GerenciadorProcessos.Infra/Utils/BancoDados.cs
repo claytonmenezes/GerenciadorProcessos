@@ -8,7 +8,7 @@ namespace GerenciadorProcessos.Infra.Utils
     {
         private SqlConnection conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["GerenciadorProcessos"].ConnectionString);
 
-        public void inserirBanco(DataTable dataTable)
+        public void inserirBanco(DataTable dataTable, int importacaoId)
         {
             Conectar();
             try
@@ -28,7 +28,9 @@ namespace GerenciadorProcessos.Infra.Utils
                     }
                     bulk.DestinationTableName = "ImpBrasil";
                     bulk.WriteToServer(dataTable);
-                    //ExecutarComando("exec prInsereProcessosNovos");
+                    ExecutarComando("exec prInsereFasesNovas " + importacaoId);
+                    ExecutarComando("exec prInsereTiposEventosNovos" + importacaoId);
+                    //ExecutarComando("exec prInsereProcessosNovos" + importacaoId);
                 }
             }
             finally
@@ -42,6 +44,7 @@ namespace GerenciadorProcessos.Infra.Utils
             try
             {
                 var comando = new SqlCommand();
+                comando.CommandTimeout = 0;
                 comando.Connection = conexao;
                 comando.CommandText = stringComando;
                 return comando.ExecuteScalar();

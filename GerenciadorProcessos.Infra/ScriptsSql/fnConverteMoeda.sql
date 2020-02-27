@@ -3,6 +3,7 @@ begin
    drop function fnConverteMoeda
    print '<< DROP fnConverteMoeda >>'
 end
+
 GO
 create function fnConverteMoeda
 /*----------------------------------------------------------------------------------------------------------------------
@@ -43,7 +44,6 @@ begin
     return convert(money,@valor)
 
 end
-
 GO
 
 if object_id('fnConverteMoeda') > 0

@@ -29,7 +29,7 @@ namespace GerenciadorProcessos.Infra.Utils
                     bulk.DestinationTableName = "ImpBrasil";
                     bulk.WriteToServer(dataTable);
                     ExecutarComando("exec prInsereFasesNovas " + importacaoId);
-                    ExecutarComando("exec prInsereTiposEventosNovos" + importacaoId);
+                    ExecutarComando("exec prInsereTiposEventosNovos " + importacaoId);
                     //ExecutarComando("exec prInsereProcessosNovos" + importacaoId);
                 }
             }

@@ -145,13 +145,32 @@
     <Compile Include="Migrations\202002280030572_incluindo o Atualizar no processo.designer.cs">
       <DependentUpon>202002280030572_incluindo o Atualizar no processo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002292024292_mudando faseid para aceitar null.cs" />
+    <Compile Include="Migrations\202002292024292_mudando faseid para aceitar null.designer.cs">
+      <DependentUpon>202002292024292_mudando faseid para aceitar null.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002292031314_incluindo a proc de inserção da primeira importação.cs" />
+    <Compile Include="Migrations\202002292031314_incluindo a proc de inserção da primeira importação.designer.cs">
+      <DependentUpon>202002292031314_incluindo a proc de inserção da primeira importação.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002292047423_incluindo a func de conversão de data.cs" />
+    <Compile Include="Migrations\202002292047423_incluindo a func de conversão de data.designer.cs">
+      <DependentUpon>202002292047423_incluindo a func de conversão de data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002292052472_incluindo a func de conversão de data que faltou.cs" />
+    <Compile Include="Migrations\202002292052472_incluindo a func de conversão de data que faltou.designer.cs">
+      <DependentUpon>202002292052472_incluindo a func de conversão de data que faltou.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\Geral\RepositorioPadrao.cs" />
     <Compile Include="Repositorios\RepositorioProcesso.cs" />
+    <Content Include="ScriptsSql\fnFormataData.sql" />
+    <Content Include="ScriptsSql\fnConverteData.sql" />
     <Content Include="ScriptsSql\fnStrZero.sql" />
     <Content Include="ScriptsSql\fnSoNumeros.sql" />
     <Content Include="ScriptsSql\fnConverteMoeda.sql" />
+    <Content Include="ScriptsSql\prInsereProcessosPrimeiraImportacao.sql" />
     <Content Include="ScriptsSql\prInsereTiposEventosNovos.sql" />
     <Content Include="ScriptsSql\prInsereProcessosNovos.sql" />
     <Content Include="ScriptsSql\prInsereFasesNovas.sql" />
@@ -216,6 +235,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002280030572_incluindo o Atualizar no processo.resx">
       <DependentUpon>202002280030572_incluindo o Atualizar no processo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002292024292_mudando faseid para aceitar null.resx">
+      <DependentUpon>202002292024292_mudando faseid para aceitar null.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002292031314_incluindo a proc de inserção da primeira importação.resx">
+      <DependentUpon>202002292031314_incluindo a proc de inserção da primeira importação.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002292047423_incluindo a func de conversão de data.resx">
+      <DependentUpon>202002292047423_incluindo a func de conversão de data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002292052472_incluindo a func de conversão de data que faltou.resx">
+      <DependentUpon>202002292052472_incluindo a func de conversão de data que faltou.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

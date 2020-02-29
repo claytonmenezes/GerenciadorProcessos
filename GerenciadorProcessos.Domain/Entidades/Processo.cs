@@ -18,7 +18,7 @@ namespace GerenciadorProcessos.Domain.Entidades
         public DateTime? DataProtocolo { get; set; }
         public DateTime? DataPrioridade { get; set; }
         public Fase Fase { get; set; }
-        public int FaseId { get; set; }
+        public int? FaseId { get; set; }
         public List<Evento> Eventos { get; set; }
         public List<PessoaRelacionada> PessoasRelacionadas { get; set; }
         public List<Titulo> Titulos { get; set; }

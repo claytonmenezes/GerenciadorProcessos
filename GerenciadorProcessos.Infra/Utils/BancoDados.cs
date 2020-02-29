@@ -30,7 +30,14 @@ namespace GerenciadorProcessos.Infra.Utils
                     bulk.WriteToServer(dataTable);
                     ExecutarComando("exec prInsereFasesNovas " + importacaoId);
                     ExecutarComando("exec prInsereTiposEventosNovos " + importacaoId);
-                    //ExecutarComando("exec prInsereProcessosNovos" + importacaoId);
+                    if (importacaoId == 1)
+                    {
+                        ExecutarComando("exec prInsereProcessosPrimeiraImportacao " + importacaoId);
+                    }
+                    else
+                    {
+                        //ExecutarComando("exec prInsereProcessosNovos " + importacaoId);
+                    }
                 }
             }
             finally

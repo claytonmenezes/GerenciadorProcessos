@@ -19,7 +19,7 @@ namespace GerenciadorProcessos.Infra
             IJobDetail jobServerOnline = JobBuilder.Create<JobServerOnline>().Build();
 
             ITrigger trigger = TriggerBuilder.Create().WithCalendarIntervalSchedule()
-                .WithSchedule(CronScheduleBuilder.CronSchedule("0 00 21 ? * * *"))
+                //.WithSchedule(CronScheduleBuilder.CronSchedule("0 00 21 ? * * *"))
                 .Build();
             scheduler.ScheduleJob(job, trigger).Wait();
 

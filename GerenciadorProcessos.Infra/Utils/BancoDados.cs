@@ -36,7 +36,7 @@ namespace GerenciadorProcessos.Infra.Utils
                     }
                     else
                     {
-                        //ExecutarComando("exec prInsereProcessosNovos " + importacaoId);
+                        ExecutarComando("exec prInsereProcessosNovos " + importacaoId);
                     }
                 }
             }

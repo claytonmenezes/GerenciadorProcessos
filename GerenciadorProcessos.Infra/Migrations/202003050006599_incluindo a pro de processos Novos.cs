@@ -1,4 +1,14 @@
-﻿if object_id('prInsereProcessosNovos') > 0
+﻿namespace GerenciadorProcessos.Infra.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class incluindoaprodeprocessosNovos : DbMigration
+    {
+        public override void Up()
+        {
+            Sql(@"
+if object_id('prInsereProcessosNovos') > 0
 begin
    drop procedure prInsereProcessosNovos
    print '<< DROP prInsereProcessosNovos >>'
@@ -12,9 +22,9 @@ DATA: 16/02/2020
 ----------------------------------------------------------------------------------------------------------------------*/
 (@importacaoId int)as
 begin
-	set dateformat ymd
+	SET DATEFORMAT ymd
 
-	set nocount on
+    set nocount on
 
 	select *
 	into #temp
@@ -87,3 +97,11 @@ begin
    print '<< CREATE prInsereProcessosNovos >>'
 end
 GO
+            ");
+        }
+        
+        public override void Down()
+        {
+        }
+    }
+}

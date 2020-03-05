@@ -125,6 +125,10 @@
     <Compile Include="Migrations\202002200013093_incluindo o numero de processo no processo.designer.cs">
       <DependentUpon>202002200013093_incluindo o numero de processo no processo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002212145098_incluindo a funcção ConverteMoeda.cs" />
+    <Compile Include="Migrations\202002212145098_incluindo a funcção ConverteMoeda.Designer.cs">
+      <DependentUpon>202002212145098_incluindo a funcção ConverteMoeda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202002241636135_incluindo funções só numeros e converte moedas.cs" />
     <Compile Include="Migrations\202002241636135_incluindo funções só numeros e converte moedas.designer.cs">
       <DependentUpon>202002241636135_incluindo funções só numeros e converte moedas.cs</DependentUpon>
@@ -160,6 +164,10 @@
     <Compile Include="Migrations\202002292052472_incluindo a func de conversão de data que faltou.cs" />
     <Compile Include="Migrations\202002292052472_incluindo a func de conversão de data que faltou.designer.cs">
       <DependentUpon>202002292052472_incluindo a func de conversão de data que faltou.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003050006599_incluindo a pro de processos Novos.cs" />
+    <Compile Include="Migrations\202003050006599_incluindo a pro de processos Novos.Designer.cs">
+      <DependentUpon>202003050006599_incluindo a pro de processos Novos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,6 +229,9 @@
     <EmbeddedResource Include="Migrations\202002200013093_incluindo o numero de processo no processo.resx">
       <DependentUpon>202002200013093_incluindo o numero de processo no processo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002212145098_incluindo a funcção ConverteMoeda.resx">
+      <DependentUpon>202002212145098_incluindo a funcção ConverteMoeda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002241636135_incluindo funções só numeros e converte moedas.resx">
       <DependentUpon>202002241636135_incluindo funções só numeros e converte moedas.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002292052472_incluindo a func de conversão de data que faltou.resx">
       <DependentUpon>202002292052472_incluindo a func de conversão de data que faltou.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003050006599_incluindo a pro de processos Novos.resx">
+      <DependentUpon>202003050006599_incluindo a pro de processos Novos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

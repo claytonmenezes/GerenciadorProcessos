@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\FaseController.cs" />
     <Compile Include="Controllers\Geral\BaseController.cs" />
     <Compile Include="Controllers\Geral\DefaultApiController.cs" />
     <Compile Include="Controllers\Geral\ServerOnlineController.cs" />

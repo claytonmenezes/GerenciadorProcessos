@@ -11,8 +11,8 @@ namespace GerenciadorProcessos.Infra.Utils
         {
             return Task.Run(() => {
                 WebClient wc = new WebClient();
-                var address = new Uri("http://localhost:59420/api/ServerOnline/Ping");
-                var t = wc.DownloadData(address);
+                var address = new Uri("http://localhost:59420/api/Processo/ListarAtualizar");
+                wc.DownloadData(address);
             });
         }
     }

@@ -172,6 +172,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\Geral\RepositorioPadrao.cs" />
+    <Compile Include="Repositorios\RepositorioFase.cs" />
     <Compile Include="Repositorios\RepositorioProcesso.cs" />
     <Content Include="ScriptsSql\fnFormataData.sql" />
     <Content Include="ScriptsSql\fnConverteData.sql" />

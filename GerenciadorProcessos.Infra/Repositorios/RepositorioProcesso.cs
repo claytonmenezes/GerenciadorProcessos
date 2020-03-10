@@ -6,7 +6,7 @@ namespace GerenciadorProcessos.Infra.Repositorios
 {
     public class RepositorioProcesso : RepositorioPadrao<Processo>
     {
-        public virtual IQueryable ListarAtualizar()
+        public IQueryable ListarAtualizar()
         {
             return Listar(p => p.Atualizar);
         }

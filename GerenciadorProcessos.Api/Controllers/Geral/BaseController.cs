@@ -52,10 +52,6 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
 
             R repo = new R();
             //repo.usuarioId = await PegaUsuario();
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
             repo.Alterar(obj);
 

@@ -1,4 +1,5 @@
 ﻿using GerenciadorProcessos.Domain.Entidades.Geral;
+using GerenciadorProcessos.Infra.Utils;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -47,6 +48,7 @@ namespace GerenciadorProcessos.Infra.Repositorios.Geral
         {
             if (!Existe(obj.Id)) throw new Exception("ID não encontrado");
             PreAlterar(obj);
+            UtilsRepositorio.GravarDependentes(obj, db);
             db.Entry(obj).State = EntityState.Modified;
             PosAlterar(obj);
         }
@@ -54,6 +56,7 @@ namespace GerenciadorProcessos.Infra.Repositorios.Geral
         {
             if (!Existe(obj.Id)) throw new Exception("ID não encontrado");
             PreExcluir(obj);
+            UtilsRepositorio.ExcluirDependentes(obj, db);
             db.Entry<T>(obj).State = EntityState.Deleted;
             PosExcluir(obj);
         }

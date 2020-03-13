@@ -6,12 +6,12 @@ using System.Web.Http;
 
 namespace GerenciadorProcessos.Api.Controllers
 {
-    public class FaseController : BaseController<Fase, RepositorioFase>
+    public class TipoEventoController : BaseController<TipoEvento, RepositorioTipoEvento>
     {
         [HttpGet]
-        public IHttpActionResult BuscarPorNome(string nome)
+        public IHttpActionResult BuscarPorCodEvento(int codigo)
         {
-            var retorno = new RepositorioFase().Listar(f => f.Nome.ToLower().Trim() == nome.ToLower().Trim()).FirstOrDefault();
+            var retorno = new RepositorioTipoEvento().Listar(te => te.CodEvento == codigo).FirstOrDefault();
             return Ok(retorno);
         }
     }

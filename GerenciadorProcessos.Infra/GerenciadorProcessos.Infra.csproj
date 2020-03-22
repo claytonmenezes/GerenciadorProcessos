@@ -173,6 +173,10 @@
     <Compile Include="Migrations\202003120405502_TipoEventoId aceitando null.designer.cs">
       <DependentUpon>202003120405502_TipoEventoId aceitando null.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003220047563_atualizando a proc de eventos.cs" />
+    <Compile Include="Migrations\202003220047563_atualizando a proc de eventos.designer.cs">
+      <DependentUpon>202003220047563_atualizando a proc de eventos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\Geral\RepositorioPadrao.cs" />
@@ -271,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003120405502_TipoEventoId aceitando null.resx">
       <DependentUpon>202003120405502_TipoEventoId aceitando null.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003220047563_atualizando a proc de eventos.resx">
+      <DependentUpon>202003220047563_atualizando a proc de eventos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

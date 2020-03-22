@@ -26,6 +26,7 @@ begin
 		select 3
 		from TipoEvento te
 		where tte.evento = te.Nome
+		and tte.codEvento = te.CodEvento
 	)
 
 	drop table #tempTiposEventos

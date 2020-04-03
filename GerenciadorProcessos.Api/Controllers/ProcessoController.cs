@@ -10,6 +10,7 @@ namespace GerenciadorProcessos.Api.Controllers
     public class ProcessoController : BaseController<Processo, RepositorioProcesso>
     {
         [HttpGet]
+        [Authorize()]
         public IEnumerable ListarAtualizar()
         {
             return new RepositorioProcesso().Listar(p => p.Atualizar);

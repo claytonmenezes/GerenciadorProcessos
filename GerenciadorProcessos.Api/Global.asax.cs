@@ -7,7 +7,6 @@ namespace GerenciadorProcessos.Api
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            Infra.Startup.StartScheduler();
         }
     }
 }

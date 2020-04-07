@@ -4,7 +4,7 @@ using Quartz.Impl;
 
 namespace GerenciadorProcessos.Infra
 {
-    public class Startup
+    public class StartupJob
     {
         public static void StartScheduler()
         {

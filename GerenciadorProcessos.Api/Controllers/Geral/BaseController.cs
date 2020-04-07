@@ -11,18 +11,18 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
     public abstract class BaseController<T, R> : DefaultApiController where T : EntidadeBase, new() where R : RepositorioPadrao<T>, new()
     {
         // GET: api/Chamado/Listar
-        //[Authorize()]
+        [Authorize()]
         [HttpGet]
-        public IEnumerable<T> Listar()
+        public async Task<IEnumerable<T>> Listar()
         {
             R repo = new R();
-            //repo.usuarioId = await PegaUsuario();
+            repo.usuarioId = await PegaUsuario();
             return repo.Listar();
         }
         //GET: api/Chamado/Buscar/5
-        //[Authorize()]
+        [Authorize()]
         [HttpGet]
-        public IHttpActionResult Buscar(int id)
+        public async Task<IHttpActionResult> Buscar(int id)
         {
             if (id == -1)
             {
@@ -32,7 +32,7 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
             else
             {
                 R repo = new R();
-                //repo.usuarioId = await PegaUsuario();
+                repo.usuarioId = await PegaUsuario();
                 T obj = repo.Buscar(id);
 
                 if (obj == null)
@@ -44,9 +44,9 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
             }
         }
         // PUT: api/Chamado/Alterar/5
-        //[Authorize()]
+        [Authorize()]
         [HttpPut]
-        public IHttpActionResult Alterar(T obj)
+        public async Task<IHttpActionResult> Alterar(T obj)
         {
             PreAlterar(obj);
 
@@ -61,7 +61,7 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!Exists(obj.Id))
+                if (!await Exists(obj.Id))
                 {
                     return NotFound();
                 }
@@ -74,15 +74,15 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
             return CreatedAtRoute("DefaultApi", new { id = obj.Id }, obj);
         }
         // POST: api/Chamado/Incluir
-        //[Authorize()]
+        [Authorize()]
         [HttpPost]
-        public IHttpActionResult Incluir()
+        public async Task<IHttpActionResult> Incluir()
         {
             string json = Request.Content.ReadAsStringAsync().Result;
             T obj = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
             PreIncluir(obj);
             R repo = new R();
-            //repo.usuarioId = await PegaUsuario();
+            repo.usuarioId = await PegaUsuario();
 
             if (!ModelState.IsValid)
             {
@@ -95,12 +95,12 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
             return CreatedAtRoute("DefaultApi", new { id = obj.Id }, obj);
         }
         // DELETE: api/Chamado/Excluir/5
-        //[Authorize()]
+        [Authorize()]
         [HttpDelete]
-        public IHttpActionResult Excluir(int id)
+        public async Task<IHttpActionResult> Excluir(int id)
         {
             R repo = new R();
-            //repo.usuarioId = await PegaUsuario();
+            repo.usuarioId = await PegaUsuario();
 
             T obj = repo.Buscar(id);
             if (obj == null)
@@ -113,10 +113,10 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
 
             return Ok(obj);
         }
-        private bool Exists(int id)
+        private async Task<bool> Exists(int id)
         {
             R repo = new R();
-            //repo.usuarioId = await PegaUsuario();
+            repo.usuarioId = await PegaUsuario();
 
             return repo.Listar(e => e.Id == id).ToList().Count > 0;
         }

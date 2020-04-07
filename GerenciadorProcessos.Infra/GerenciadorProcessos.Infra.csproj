@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GerenciadorProcessos.Infra</RootNamespace>
     <AssemblyName>GerenciadorProcessos.Infra</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -177,6 +178,18 @@
     <Compile Include="Migrations\202003220047563_atualizando a proc de eventos.designer.cs">
       <DependentUpon>202003220047563_atualizando a proc de eventos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003310117083_incluindo Usuario.cs" />
+    <Compile Include="Migrations\202003310117083_incluindo Usuario.designer.cs">
+      <DependentUpon>202003310117083_incluindo Usuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003310130050_incluindo o expira senha.cs" />
+    <Compile Include="Migrations\202003310130050_incluindo o expira senha.designer.cs">
+      <DependentUpon>202003310130050_incluindo o expira senha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004030914181_removendo campos não utilizados.cs" />
+    <Compile Include="Migrations\202004030914181_removendo campos não utilizados.designer.cs">
+      <DependentUpon>202004030914181_removendo campos não utilizados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004070215420_atualizando a proc de inserção de tipo evento.cs" />
     <Compile Include="Migrations\202004070215420_atualizando a proc de inserção de tipo evento.designer.cs">
       <DependentUpon>202004070215420_atualizando a proc de inserção de tipo evento.cs</DependentUpon>
@@ -190,6 +203,7 @@
     <Compile Include="Repositorios\Geral\RepositorioPadrao.cs" />
     <Compile Include="Repositorios\RepositorioFase.cs" />
     <Compile Include="Repositorios\RepositorioProcesso.cs" />
+    <Compile Include="Repositorios\RepositorioUsuario.cs" />
     <Compile Include="Utils\UtilsRepositorio.cs" />
     <Content Include="ScriptsSql\fnFormataData.sql" />
     <Content Include="ScriptsSql\fnConverteData.sql" />
@@ -201,14 +215,16 @@
     <Content Include="ScriptsSql\prInsereProcessosNovos.sql" />
     <Content Include="ScriptsSql\prInsereFasesNovas.sql" />
     <Compile Include="Repositorios\RepositorioTipoEvento.cs" />
-    <Compile Include="Startup.cs" />
+    <Compile Include="StartupJob.cs" />
     <Compile Include="Utils\BancoDados.cs" />
     <Compile Include="Utils\JobServerOnline.cs" />
     <Compile Include="Utils\JobCargaBrasil.cs" />
     <Compile Include="Utils\TratamentoArquivoBrasil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +302,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003220047563_atualizando a proc de eventos.resx">
       <DependentUpon>202003220047563_atualizando a proc de eventos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003310117083_incluindo Usuario.resx">
+      <DependentUpon>202003310117083_incluindo Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003310130050_incluindo o expira senha.resx">
+      <DependentUpon>202003310130050_incluindo o expira senha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004030914181_removendo campos não utilizados.resx">
+      <DependentUpon>202004030914181_removendo campos não utilizados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004070215420_atualizando a proc de inserção de tipo evento.resx">
       <DependentUpon>202004070215420_atualizando a proc de inserção de tipo evento.cs</DependentUpon>

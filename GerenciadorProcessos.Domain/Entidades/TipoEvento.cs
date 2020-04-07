@@ -6,11 +6,6 @@ namespace GerenciadorProcessos.Domain.Entidades
     {
         public string Nome { get; set; }
         public int? CodEvento { get; set; }
-        public int? PBAS { get; set; }
-        public int? PCORR { get; set; }
-        public int? EVINC { get; set; }
-        public int? PEVINC { get; set; }
-        public int? PEVENTO { get; set; }
-        public int? PONTUACAO { get; set; }
+        public int? Pontuacao { get; set; }
     }
 }

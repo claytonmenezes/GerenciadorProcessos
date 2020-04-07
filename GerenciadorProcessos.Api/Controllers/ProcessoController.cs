@@ -15,5 +15,11 @@ namespace GerenciadorProcessos.Api.Controllers
         {
             return new RepositorioProcesso().Listar(p => p.Atualizar);
         }
+        [HttpGet]
+        [Authorize()]
+        public IEnumerable ListarAtualizados()
+        {
+            return new RepositorioProcesso().Listar(p => p.NUP != null);
+        }
     }
 }

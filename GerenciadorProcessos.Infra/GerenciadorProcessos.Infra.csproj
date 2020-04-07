@@ -190,6 +190,14 @@
     <Compile Include="Migrations\202004030914181_removendo campos não utilizados.designer.cs">
       <DependentUpon>202004030914181_removendo campos não utilizados.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004070215420_atualizando a proc de inserção de tipo evento.cs" />
+    <Compile Include="Migrations\202004070215420_atualizando a proc de inserção de tipo evento.designer.cs">
+      <DependentUpon>202004070215420_atualizando a proc de inserção de tipo evento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004070223188_atualizando a proc de inserção de fase.cs" />
+    <Compile Include="Migrations\202004070223188_atualizando a proc de inserção de fase.designer.cs">
+      <DependentUpon>202004070223188_atualizando a proc de inserção de fase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004031800139_incluindo o usuario do Robo.cs" />
     <Compile Include="Migrations\202004031800139_incluindo o usuario do Robo.designer.cs">
       <DependentUpon>202004031800139_incluindo o usuario do Robo.cs</DependentUpon>
@@ -307,6 +315,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004030914181_removendo campos não utilizados.resx">
       <DependentUpon>202004030914181_removendo campos não utilizados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004070215420_atualizando a proc de inserção de tipo evento.resx">
+      <DependentUpon>202004070215420_atualizando a proc de inserção de tipo evento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004070223188_atualizando a proc de inserção de fase.resx">
+      <DependentUpon>202004070223188_atualizando a proc de inserção de fase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004031800139_incluindo o usuario do Robo.resx">
       <DependentUpon>202004031800139_incluindo o usuario do Robo.cs</DependentUpon>

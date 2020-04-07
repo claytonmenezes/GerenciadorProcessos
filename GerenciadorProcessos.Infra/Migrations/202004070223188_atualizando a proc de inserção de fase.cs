@@ -1,4 +1,13 @@
-﻿if object_id('prInsereFasesNovas') > 0
+﻿namespace GerenciadorProcessos.Infra.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class atualizandoaprocdeinserçãodefase : DbMigration
+    {
+        public override void Up()
+        {
+            Sql(@"if object_id('prInsereFasesNovas') > 0
 begin
    drop procedure prInsereFasesNovas
    print '<< DROP prInsereFasesNovas >>'
@@ -37,3 +46,11 @@ begin
    print '<< CREATE prInsereFasesNovas >>'
 end
 GO
+");
+        }
+        
+        public override void Down()
+        {
+        }
+    }
+}

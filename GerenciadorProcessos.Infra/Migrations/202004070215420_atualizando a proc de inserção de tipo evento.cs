@@ -1,4 +1,13 @@
-﻿if object_id('prInsereTiposEventosNovos') > 0
+﻿namespace GerenciadorProcessos.Infra.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class atualizandoaprocdeinserçãodetipoevento : DbMigration
+    {
+        public override void Up()
+        {
+            Sql(@"if object_id('prInsereTiposEventosNovos') > 0
 begin
    drop procedure prInsereTiposEventosNovos
    print '<< DROP prInsereTiposEventosNovos >>'
@@ -39,4 +48,11 @@ if object_id('prInsereTiposEventosNovos') > 0
 begin
    print '<< CREATE prInsereTiposEventosNovos >>'
 end
-GO
+GO");
+        }
+        
+        public override void Down()
+        {
+        }
+    }
+}

@@ -225,7 +225,6 @@
     <Compile Include="Repositorios\RepositorioTipoEvento.cs" />
     <Compile Include="StartupJob.cs" />
     <Compile Include="Utils\BancoDados.cs" />
-    <Compile Include="Utils\JobServerOnline.cs" />
     <Compile Include="Utils\JobCargaBrasil.cs" />
     <Compile Include="Utils\TratamentoArquivoBrasil.cs" />
   </ItemGroup>

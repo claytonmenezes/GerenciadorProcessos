@@ -15,17 +15,12 @@ namespace GerenciadorProcessos.Infra
         }
         private static void ScheduleJobs(IScheduler scheduler)
         {
-            //IJobDetail job = JobBuilder.Create<JobCargaBrasil>().Build();
-            //IJobDetail jobServerOnline = JobBuilder.Create<JobServerOnline>().Build();
+            IJobDetail job = JobBuilder.Create<JobCargaBrasil>().Build();
 
-            //ITrigger trigger = TriggerBuilder.Create().WithCalendarIntervalSchedule()
-            //    .WithSchedule(CronScheduleBuilder.CronSchedule("0 30 15 ? * * *"))
-            //    .Build();
-            //scheduler.ScheduleJob(job, trigger).Wait();
-
-            //ITrigger triggerServerOnline = TriggerBuilder.Create().WithSimpleSchedule(x => x.WithIntervalInMinutes(1).RepeatForever())
-            //    .Build();
-            //scheduler.ScheduleJob(jobServerOnline, triggerServerOnline).Wait();
+            ITrigger trigger = TriggerBuilder.Create().WithCalendarIntervalSchedule()
+                .WithSchedule(CronScheduleBuilder.CronSchedule("0 30 18 ? * * *"))
+                .Build();
+            scheduler.ScheduleJob(job, trigger).Wait();
         }
     }
 }

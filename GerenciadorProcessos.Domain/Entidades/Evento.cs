@@ -9,7 +9,6 @@ namespace GerenciadorProcessos.Domain.Entidades
         [IgnoreDataMember]
         public Processo Processo { get; set; }
         public int ProcessoId { get; set; }
-        [IgnoreDataMember]
         public TipoEvento TipoEvento { get; set; }
         public int? TipoEventoId { get; set; }
         public DateTime Data { get; set; }

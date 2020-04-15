@@ -15,6 +15,7 @@ namespace GerenciadorProcessos.Infra.Repositorios
             return base.Listar(predicate)
                 .Include("Fase")
                 .Include("Eventos")
+                .Include("Eventos.TipoEvento")
                 .Include("PessoasRelacionadas")
                 .Include("Titulos")
                 .Include("Substancias")

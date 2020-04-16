@@ -51,6 +51,7 @@
     <Compile Include="Entidades\Geral\EntidadeUsuarioBase.cs" />
     <Compile Include="Entidades\Geral\ParametroSistema.cs" />
     <Compile Include="Entidades\Municipio.cs" />
+    <Compile Include="Entidades\ParametroUsuario.cs" />
     <Compile Include="Entidades\PessoaRelacionada.cs" />
     <Compile Include="Entidades\Processo.cs" />
     <Compile Include="Entidades\ProcessoAssociado.cs" />

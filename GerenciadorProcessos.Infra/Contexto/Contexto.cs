@@ -24,6 +24,7 @@ namespace GerenciadorProcessos.Infra.Contexto
         public virtual DbSet<Evento> Eventos { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<ParametroSistema> ParametrosSistema { get; set; }
+        public virtual DbSet<ParametroUsuario> ParametrosUsuario { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

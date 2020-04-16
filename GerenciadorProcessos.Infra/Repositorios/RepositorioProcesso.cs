@@ -29,8 +29,8 @@ namespace GerenciadorProcessos.Infra.Repositorios
         }
         public IQueryable<Processo> ListarAtualizar()
         {
-            var repoParSistema = new RepositorioParametroSistema();
-            var parametro = repoParSistema.Listar().FirstOrDefault();
+            var repoParusuario = new RepositorioParametroUsuario() { usuarioId = usuarioId };
+            var parametro = repoParusuario.Listar().FirstOrDefault();
             return Listar(p => p.Atualizar == parametro.NumeroColunaAtualizar);
         }
         protected override void PreAlterar(Processo obj)

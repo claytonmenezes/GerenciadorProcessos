@@ -214,11 +214,16 @@
     <Compile Include="Migrations\202004160046577_incluindo o ParametroSistema.designer.cs">
       <DependentUpon>202004160046577_incluindo o ParametroSistema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004160249523_UsuarioId aceitando null.cs" />
+    <Compile Include="Migrations\202004160249523_UsuarioId aceitando null.designer.cs">
+      <DependentUpon>202004160249523_UsuarioId aceitando null.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\Geral\RepositorioPadrao.cs" />
     <Compile Include="Repositorios\Geral\RepositorioParametroSistema.cs" />
     <Compile Include="Repositorios\RepositorioFase.cs" />
+    <Compile Include="Repositorios\RepositorioParametroUsuario.cs" />
     <Compile Include="Repositorios\RepositorioProcesso.cs" />
     <Compile Include="Repositorios\RepositorioUsuario.cs" />
     <Compile Include="Utils\UtilsRepositorio.cs" />
@@ -345,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004160046577_incluindo o ParametroSistema.resx">
       <DependentUpon>202004160046577_incluindo o ParametroSistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004160249523_UsuarioId aceitando null.resx">
+      <DependentUpon>202004160249523_UsuarioId aceitando null.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

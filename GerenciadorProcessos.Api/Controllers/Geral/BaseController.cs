@@ -51,7 +51,7 @@ namespace GerenciadorProcessos.Api.Controllers.Geral
             PreAlterar(obj);
 
             R repo = new R();
-            //repo.usuarioId = await PegaUsuario();
+            repo.usuarioId = await PegaUsuario();
 
             repo.Alterar(obj);
 

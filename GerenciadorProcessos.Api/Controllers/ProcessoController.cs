@@ -2,6 +2,7 @@
 using GerenciadorProcessos.Domain.Entidades;
 using GerenciadorProcessos.Infra.Repositorios;
 using System.Collections;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace GerenciadorProcessos.Api.Controllers
@@ -10,9 +11,9 @@ namespace GerenciadorProcessos.Api.Controllers
     {
         [HttpGet]
         [Authorize()]
-        public IEnumerable ListarAtualizar()
+        public async Task<IEnumerable> ListarAtualizar()
         {
-            return new RepositorioProcesso().ListarAtualizar();
+            return new RepositorioProcesso() { usuarioId = await PegaUsuario() }.ListarAtualizar();
         }
         [HttpGet]
         [Authorize()]

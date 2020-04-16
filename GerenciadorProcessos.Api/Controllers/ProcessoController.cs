@@ -12,7 +12,7 @@ namespace GerenciadorProcessos.Api.Controllers
         [Authorize()]
         public IEnumerable ListarAtualizar()
         {
-            return new RepositorioProcesso().Listar(p => p.Atualizar);
+            return new RepositorioProcesso().ListarAtualizar();
         }
         [HttpGet]
         [Authorize()]

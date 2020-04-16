@@ -1,7 +1,6 @@
 ﻿using GerenciadorProcessos.Domain.Entidades;
 using GerenciadorProcessos.Infra.Repositorios.Geral;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -27,6 +26,12 @@ namespace GerenciadorProcessos.Infra.Repositorios
         public override IQueryable<Processo> Listar()
         {
             return base.Listar().Include("Fase");
+        }
+        public IQueryable<Processo> ListarAtualizar()
+        {
+            var repoParSistema = new RepositorioParametroSistema();
+            var parametro = repoParSistema.Listar().FirstOrDefault();
+            return Listar(p => p.Atualizar == parametro.NumeroColunaAtualizar);
         }
         protected override void PreAlterar(Processo obj)
         {

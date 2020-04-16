@@ -27,6 +27,6 @@ namespace GerenciadorProcessos.Domain.Entidades
         public List<CondicaoPropriedadeSolo> CondicoesPropriedadeSolo { get; set; }
         public List<ProcessoAssociado> ProcessosAssociados { get; set; }
         public List<DocumentoProcesso> DocumentosProcesso { get; set; }
-        public bool Atualizar { get; set; }
+        public int? Atualizar { get; set; }
     }
 }

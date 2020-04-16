@@ -1,4 +1,5 @@
 ﻿using GerenciadorProcessos.Domain.Entidades;
+using GerenciadorProcessos.Domain.Entidades.Geral;
 using GerenciadorProcessos.Infra.Migrations;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -22,6 +23,7 @@ namespace GerenciadorProcessos.Infra.Contexto
         public virtual DbSet<DocumentoProcesso> DocumentosProcesso { get; set; }
         public virtual DbSet<Evento> Eventos { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<ParametroSistema> ParametrosSistema { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

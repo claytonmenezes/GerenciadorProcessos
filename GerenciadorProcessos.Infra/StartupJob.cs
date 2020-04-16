@@ -1,6 +1,8 @@
-﻿using GerenciadorProcessos.Infra.Utils;
+﻿using GerenciadorProcessos.Infra.Repositorios.Geral;
+using GerenciadorProcessos.Infra.Utils;
 using Quartz;
 using Quartz.Impl;
+using System.Linq;
 
 namespace GerenciadorProcessos.Infra
 {
@@ -8,10 +10,16 @@ namespace GerenciadorProcessos.Infra
     {
         public static void StartScheduler()
         {
-            StdSchedulerFactory factory = new StdSchedulerFactory();
-            IScheduler scheduler = factory.GetScheduler().Result;
-            scheduler.Start().Wait();
-            ScheduleJobs(scheduler);
+            var repoParSistema = new RepositorioParametroSistema();
+            var parametro = repoParSistema.Listar().FirstOrDefault();
+
+            if (parametro.AtualizaArquivoBrasil)
+            {
+                StdSchedulerFactory factory = new StdSchedulerFactory();
+                IScheduler scheduler = factory.GetScheduler().Result;
+                scheduler.Start().Wait();
+                ScheduleJobs(scheduler);
+            }
         }
         private static void ScheduleJobs(IScheduler scheduler)
         {

@@ -16,5 +16,9 @@ namespace GerenciadorProcessos.Infra.Repositorios
         {
             return base.Listar(predicate).Where(pu => pu.UsuarioId == usuarioId);
         }
+        public ParametroUsuario BuscarParametro ()
+        {
+            return Listar().FirstOrDefault();
+        }
     }
 }

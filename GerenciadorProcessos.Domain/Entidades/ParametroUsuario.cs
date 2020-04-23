@@ -5,5 +5,6 @@ namespace GerenciadorProcessos.Domain.Entidades
     public class ParametroUsuario : EntidadeUsuarioBase
     {
         public int NumeroColunaAtualizar { get; set; }
+        public int ApiCaptcha { get; set; }
     }
 }

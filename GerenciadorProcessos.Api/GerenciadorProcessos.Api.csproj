@@ -206,6 +206,7 @@
     <Compile Include="Controllers\FaseController.cs" />
     <Compile Include="Controllers\Geral\BaseController.cs" />
     <Compile Include="Controllers\Geral\DefaultApiController.cs" />
+    <Compile Include="Controllers\ParametroUsuarioController.cs" />
     <Compile Include="Controllers\ProcessoController.cs" />
     <Compile Include="Controllers\TipoEventoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
